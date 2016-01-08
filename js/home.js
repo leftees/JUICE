@@ -1,15 +1,20 @@
 $(document).ready(function() {
-	$(".creaSito").click(function(event) {
-		creaSito();
+	$(".newSite").click(function(event) {
+		newSite();
 	});
 	$(".openFolder").click(function(event) {
-		console.log("apri cartella");
 		var name = $(this).attr('folder');
+		console.log("apri cartella: "+name);
 		fai("openFolder",{"nome": name});
+	});
+	$(".openConsole").click(function(event) {
+		var name = $(this).attr('folder');
+		console.log("apri console: "+name);
+		fai("openConsole",{"nome": name});
 	});
 });
 
-function creaSito() {
+function newSite() {
 	console.log("Creo Sito.");
 	fai("add",{"nome": "pippo"});
 }

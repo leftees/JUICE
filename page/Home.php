@@ -9,7 +9,7 @@
 			));
 		}
 		public function makePage() {
-			$siti = ($this->ritornaSottocartelle("progetti"));
+			$siti = ($this->returnSubFolder("projects"));
 			jBlock();
 			?>
 			<div class="row" id="elencoSiti">
@@ -22,7 +22,7 @@
 					$percent;
 					$dir = getcwd();
 					foreach ( $siti as $j ) {
-						$gitInfo = getGitLog($dir."/progetti/".$j);
+						$gitInfo = getGitLog($dir."/projects/".$j);
 						if(count($gitInfo)!=0) {
 							$i = array_shift($gitInfo);
 						} else {
@@ -40,21 +40,28 @@
 							$percent = 100 * intval($percent[0]) + 10 * intval($percent[1]) + intval($percent[2]);
 						}
 					?>
-						<a href="progetti/<?=$j?>">
+						<a href="projects/<?=$j?>">
 							<div class="col-lg-<?=$dim?>">
 								<div class="row" style="margin:0px;">
 									<div class="well well-sm col-xs-12">
 										<div class="row">
 											<div class="text col-xs-10">
-												<div class="sito"><b>Sito:</b> <?=$j?><br></div>
-												<div class="autore"><b>Autore:</b> <?=$i["author"]?><br></div>
+												<div class="sito"><b>Site:</b> <?=$j?><br></div>
+												<div class="autore"><b>Author:</b> <?=$i["author"]?><br></div>
 												<div class="tag"><b>Tag:</b> <?php if(isset($i["tag"])) echo $i["tag"]?><br></div>
-												<div class="data"><b>Data:</b> <?=$i["date"]?><br></div>
-												<div class="messaggio"><b>Messaggio:</b> <?=$i["message"]?><br></div>
+												<div class="data"><b>Date:</b> <?=$i["date"]?><br></div>
+												<div class="messaggio"><b>Message:</b> <?=$i["message"]?><br></div>
 											</div>
 											<div class="buttons col-xs-2">
-												<a href="progetti/<?=$j?>/status.php"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a><br><br>
-												<a href="javascript:void(0)" class="openFolder" folder="progetti\\<?=$j?>"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></a>
+												<a href="projects/<?=$j?>/status.php">
+													<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+												</a><br><br>
+												<a href="javascript:void(0)" class="openFolder" folder="projects\\<?=$j?>">
+													<span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+												</a><br><br>
+												<a href="javascript:void(0)" class="openConsole" folder="projects\\<?=$j?>">
+													<span class="glyphicon glyphicon-console" aria-hidden="true"></span>
+												</a>
 											</div>
 										</div>
 										<div class="row">
@@ -81,7 +88,7 @@
 			$temp = jBlockClose();
 			return $temp;
 		}
-		private function ritornaSottocartelle( $dir = "./" ) {
+		private function returnSubFolder( $dir = "./" ) {
 			$temp = array();
 			if (is_dir($dir)) {
 				if ($dh = opendir($dir)) {
@@ -98,8 +105,8 @@
 		private function makeMenu() {
 			jBlock();
 			?>
-				<li><a href="#"><span class="glyphicon glyphicon-plus creaSito" aria-hidden="true"></span></a></li>
-				<li><a href="progetti/phpmyadmin/"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span></a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-plus newSite" aria-hidden="true"></span></a></li>
+				<li><a href="projects/phpmyadmin/"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span></a></li>
 			<?php
 			$temp = jBlockEnd();
 			return $temp;

@@ -23,15 +23,13 @@
 					$dir = getcwd();
 					foreach ( $siti as $j ) {
 						$gitInfo = getGitLog($dir."/projects/".$j);
-						if(count($gitInfo)!=0) {
+						$i = array();
+						$i["author"] = " - ";
+						$i["tag"] = "1.0.0";
+						$i["date"] = " - ";
+						$i["message"] = " - ";
+						if(count($gitInfo)!=0)
 							$i = array_shift($gitInfo);
-						} else {
-							$i = array();
-							$i["author"] = " - ";
-							$i["tag"] = "1.0.0";
-							$i["date"] = " - ";
-							$i["message"] = " - ";
-						}
 						$cont++;
 						if($cont % $nPerCol == 1)
 							echo '<div class="row">';

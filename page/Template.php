@@ -8,6 +8,7 @@
 			$this->data["css"] = array_merge( $this->data["css"], array(
 				"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css",
 				"https://fonts.googleapis.com/css?family=Quicksand",
+				"https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css",
 				"css/main.min.css"
 			));
 			$this->data["js"] = array_merge( $this->data["js"], array(

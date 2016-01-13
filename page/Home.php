@@ -9,7 +9,7 @@
 			));
 		}
 		public function makePage() {
-			$siti = ($this->returnSubFolder("projects"));
+			$sites = ($this->returnSubFolder("projects"));
 			jBlock();
 			?>
 			<div class="row" id="elencoSiti">
@@ -21,7 +21,7 @@
 					$cont = 0;
 					$percent;
 					$dir = getcwd();
-					foreach ( $siti as $j ) {
+					foreach ( $sites as $j ) {
 						$gitInfo = getGitLog($dir."/projects/".$j);
 						$i = array();
 						$i["author"] = " - ";
@@ -59,6 +59,9 @@
 												</a><br><br>
 												<a href="javascript:void(0)" class="openConsole" folder="projects\\<?=$j?>">
 													<span class="glyphicon glyphicon-console" aria-hidden="true"></span>
+												</a><br><br>
+												<a href="javascript:void(0)" class="" folder="projects\\<?=$j?>">
+													<i class="fa fa-git"></i>
 												</a>
 											</div>
 										</div>
@@ -77,7 +80,7 @@
 							</div>
 						</a>
 					<?php
-					if(($cont % $nPerCol == 0) || (!next( $siti )))
+					if(($cont % $nPerCol == 0) || ($j == end( $sites )))
 						echo '</div>';
 					} ?>
 				</div>

@@ -23,38 +23,43 @@
 			jBlock();
 			?>
 			<html lang="en">
-			  <head>
-			    <meta charset="utf-8">
-			    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-			    <meta name="viewport" content="width=device-width, initial-scale=1">
-			    <title><?=$this->title?></title>
+				<head>
+					<meta charset="utf-8">
+					<meta http-equiv="X-UA-Compatible" content="IE=edge">
+					<meta name="viewport" content="width=device-width, initial-scale=1">
+					<title><?=$this->title?></title>
 					<?=$this->css?>
-			  </head>
-			  <body>
+				</head>
+				<body>
 					<div class="col-xs-12 background">
 					</div>
 					<div class="col-xs-12 no-background">
 						<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
-						  <div class="container-fluid">
+							<div class="container-fluid">
 								<div class="navbar-header">
 									<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
-						        <span class="sr-only">Toggle navigation</span>
-						        <span class="icon-bar"></span>
-						        <span class="icon-bar"></span>
-						        <span class="icon-bar"></span>
-						      </button>
+										<span class="sr-only">Toggle navigation</span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+									</button>
 									<a class="navbar-brand" href="javscript:void(0)">
-										<?=$this->brand[0]?>
-							    </a>
+										<div style="display:inline-block;">
+											<img src="<?=$this->brand[1]?>" height="35px" alt="brand" style="margin-top:-10px;margin-right:7px;">
+										</div>
+										<div style="display:inline-block;">
+											<?=$this->brand[0]?>
+										</div>
+									</a>
 								</div>
 								<div class="collapse navbar-collapse" id="navbar-collapse">
-						      <ul class="nav navbar-nav navbar-right">
+									<ul class="nav navbar-nav navbar-right">
 										<?=$this->menu?>
-						      </ul>
-						    </div>
+									</ul>
+								</div>
 							</div>
 						</nav>
-					  <div class="row my-page">
+						<div class="row my-page">
 							<div class="col-lg-12">
 								<div class="row box">
 									<div class="col-lg-12" id="page">
@@ -65,11 +70,11 @@
 									<?=$this->footer?>
 								</div>
 							</div>
-					  </div>
+						</div>
 					</div>
 					<?=$this->js?>
 					<?=$this->jsVariables?>
-			  </body>
+				</body>
 			</html>
 			<?php
 			$temp = jBlockEnd();

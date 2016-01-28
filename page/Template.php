@@ -2,7 +2,7 @@
 	class Template extends Html {
 		public function __construct() {
 			parent::__construct();
-			$this->data["brand"] = array("JUICE","");
+			$this->data["brand"] = array("JUICE","img/brand1.png");
 			$this->data["title"] = "JUICE";
 			$this->data["template"] = "gui/template.php";
 			$this->data["css"] = array_merge( $this->data["css"], array(

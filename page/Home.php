@@ -68,10 +68,10 @@
 										<div class="row">
 											<div class="col-xs-12">
 												<div class="progress">
-												  <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" aria-valuenow="<?=$percent?>"
-												  aria-valuemin="0" aria-valuemax="100" style="width:<?=$percent%100?>%">
-												    <?=$percent?>%
-												  </div>
+													<div class="progress-bar progress-bar-striped active <?=$this->getColor($percent)?>" role="progressbar" aria-valuenow="<?=$percent?>"
+													aria-valuemin="0" aria-valuemax="100" style="text-shadow: 0px 0px 8px black; width:<?=$percent%100?>%">
+														<b><?=$percent?>%</b>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -110,6 +110,14 @@
 				<li><a href="projects/phpmyadmin/"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span></a></li>
 			<?php
 			$temp = jBlockEnd();
+			return $temp;
+		}
+		private function getColor( $_percent ) {
+			$temp = "red";
+			if( $_percent / 100 < 1 ) $temp = "progress-bar-danger";
+			else if( $_percent / 100 < 2 ) $temp = "progress-bar-warning";
+			else if( $_percent / 100 < 3 ) $temp = "progress-bar-success";
+			else if( $_percent / 100 < 4 ) $temp = "progress-bar-info";
 			return $temp;
 		}
 	}

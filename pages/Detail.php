@@ -1,5 +1,5 @@
 <?php
-	class Home extends Template {
+	class Detail extends Template {
 		public function __construct() {
 			parent::__construct();
 			$this->data["content"] = $this->makePage();
@@ -19,58 +19,42 @@
 					$max = 12;
 					$dim = $max / $nPerCol;
 					$cont = 0;
-					$percent;
+					$percent = "";
+					$precentCurrent = 0;
 					$dir = getcwd();
-					foreach ( $sites as $j ) {
-						$gitInfo = getGitLog($dir."/projects/".$j);
-						$i = array();
-						$i["author"] = " - ";
-						$i["tag"] = "1.0.0";
-						$i["date"] = " - ";
-						$i["message"] = " - ";
-						if(count($gitInfo)!=0)
-							$i = array_shift($gitInfo);
+					if(!isset($_GET["proj"])) $_GET["proj"] = "JATE";
+					$project = $_GET["proj"];
+					$logs = getGitLog("./projects/$project/");
+					foreach ( $logs as $i ) {
 						$cont++;
 						if($cont % $nPerCol == 1)
 							echo '<div class="row">';
-						if(isset($i["tag"])) {
-							$percent = explode(".",$i["tag"]);
-							$percent = 100 * intval($percent[0]) + 10 * intval($percent[1]) + intval($percent[2]);
-						}
+						$percent = explode(".",$i["tag"]);
+						$percent = 100 * intval($percent[0]) + 10 * intval($percent[1]) + intval($percent[2]);
+						if( $percent >= 0 )
+							$precentCurrent = $percent;
 						?>
-						<a href="projects/<?=$j?>">
+						<!-- <a href="projects/<?=$project?>"> -->
 							<div class="col-lg-<?=$dim?>">
 								<div class="row" style="margin:0px;">
 									<div class="well well-sm col-xs-12">
 										<div class="row">
 											<div class="text col-xs-10">
-												<div class="sito"><b>Site:</b> <?=$j?><br></div>
+												<div class="sito"><b>Site:</b> <?=$project?><br></div>
 												<div class="autore"><b>Author:</b> <?=$i["author"]?><br></div>
 												<div class="tag"><b>Tag:</b> <?php if(isset($i["tag"])) echo $i["tag"]?><br></div>
 												<div class="data"><b>Date:</b> <?=$i["date"]?><br></div>
 												<div class="messaggio"><b>Message:</b> <?=$i["message"]?><br></div>
 											</div>
 											<div class="buttons col-xs-2">
-												<a href="index.php?page=detail&proj=<?=$j?>">
-													<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-												</a><br><br>
-												<a href="javascript:void(0)" class="openFolder" folder="projects\\<?=$j?>">
-													<span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
-												</a><br><br>
-												<a href="javascript:void(0)" class="openConsole" folder="projects\\<?=$j?>">
-													<span class="glyphicon glyphicon-console" aria-hidden="true"></span>
-												</a><br><br>
-												<a href="javascript:void(0)" class="" folder="projects\\<?=$j?>">
-													<i class="fa fa-git"></i>
-												</a>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-xs-12">
 												<div class="progress">
-													<div class="progress-bar progress-bar-striped active <?=$this->getColor($percent)?>" role="progressbar" aria-valuenow="<?=$percent?>"
-													aria-valuemin="0" aria-valuemax="100" style="text-shadow: 0px 0px 8px black; width:<?=$percent%100?>%">
-														<b><?=$percent?>%</b>
+													<div class="progress-bar progress-bar-striped active <?=$this->getColor($precentCurrent)?>" role="progressbar" aria-valuenow="<?=$precentCurrent?>"
+													aria-valuemin="0" aria-valuemax="100" style="text-shadow: 0px 0px 8px black; width:<?=$precentCurrent%100?>%">
+														<b><?=$precentCurrent?>%</b>
 													</div>
 												</div>
 											</div>
@@ -78,9 +62,9 @@
 									</div>
 								</div>
 							</div>
-						</a>
+						<!-- </a> -->
 						<?php
-						if(($cont % $nPerCol == 0) || ($j == end( $sites )))
+						if(($cont % $nPerCol == 0) || ($i == end( $logs )))
 							echo '</div>';
 					} ?>
 				</div>

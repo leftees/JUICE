@@ -15,11 +15,12 @@
 	//FETCH
 	if(!isset($_GET["page"])) $_GET["page"] = "home";
 	$webApp->addPages([
-		["home","Home"]
+		["home","Home"],
+		["detail","Detail"]
 	]);
 	$page = $webApp->fetchPage($_GET["page"]);
 	$page->uniforma();
-	
+
 	//TEMPLATE
 	require_once($page->data["template"]);
 	$gui = new GUI();

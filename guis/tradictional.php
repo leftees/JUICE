@@ -55,12 +55,14 @@
 										<span class="icon-bar"></span>
 									</button>
 									<div class="navbar-brand">
+										<a href="index.php">
 										<div style="display:inline-block;">
 											<img src="<?=$this->brand[1]?>" height="35px" alt="brand" style="margin-top:-10px;margin-right:7px;">
 										</div>
 										<div style="display:inline-block;">
 											<?=$this->brand[0]?>
 										</div>
+										</a>
 									</div>
 								</div>
 								<div class="collapse navbar-collapse" id="navbar-collapse">

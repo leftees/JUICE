@@ -19,7 +19,7 @@
 					$hash = explode(' ', $line);
 					$hash = trim(end($hash));
 					$git_history[$hash] = [
-						'tag' => '0.0.0',
+						'tag' => '-1.0.0',
 						'author' => '',
 						'date' => '',
 						'message' => ''

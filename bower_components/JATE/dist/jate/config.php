@@ -8,5 +8,5 @@
 	$GLOBALS["config"]["encrypt"] = array();
 	$GLOBALS["config"]["encrypt"]["password"] = "";
 	$GLOBALS["all"] = "";
-	$GLOBALS["DEBUG"] = 0;
+	$GLOBALS["DEBUG"] = 1;
 ?>

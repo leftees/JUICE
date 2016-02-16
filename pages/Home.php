@@ -2,6 +2,7 @@
 	class Home extends Template {
 		public function __construct() {
 			parent::__construct();
+			$this->addModule(new Popup());
 			$this->data["content"] = $this->makePage();
 			$this->data["menu"] = $this->makeMenu();
 			$this->data["js"] = array_merge( $this->data["js"], array(
@@ -9,6 +10,7 @@
 			));
 		}
 		public function makePage() {
+			$popupA = $this->modules["Popup"];
 			$sites = ($this->returnSubFolder("projects"));
 			jBlock();
 			?>
@@ -23,7 +25,7 @@
 					$dir = getcwd();
 					foreach ( $sites as $j ) {
 						$gitInfo = getGitLog($dir."/projects/".$j);
-						$i = array();
+						$i = [];
 						$i["author"] = " - ";
 						$i["tag"] = "1.0.0";
 						$i["date"] = " - ";
@@ -87,10 +89,11 @@
 			</div>
 			<?php
 			$temp = jBlockClose();
+			$temp .= $popupA->draw();
 			return $temp;
 		}
 		private function returnSubFolder( $dir = "./" ) {
-			$temp = array();
+			$temp = [];
 			if (is_dir($dir)) {
 				if ($dh = opendir($dir)) {
 					while (($file = readdir($dh)) !== false) {
@@ -112,7 +115,7 @@
 						<span id="searchClear" class="glyphicon glyphicon-remove-circle"></span>
 					</div>
 				</li>
-				<!-- <li><a href="#"><span class="glyphicon glyphicon-plus newSite" aria-hidden="true"></span></a></li> -->
+				<li><a href="#"><span class="glyphicon glyphicon-plus newSite" aria-hidden="true"></span></a></li>
 				<li><a href="#" class="openConsole" folder=".\\"><span class="glyphicon glyphicon-console" aria-hidden="true"></span></a></li>
 				<li><a href="projects/phpmyadmin/"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span></a></li>
 			<?php

@@ -1,28 +1,36 @@
+$color01: #222
+$color02: rgb(190,190,190)
+$color03: white
+$color04: rgb(237,100,100)
+$color05: rgb(100,204,237)
+$color06: rgb(100,237,113)
+$color07: rgb(237,215,100)
+$color08: rgba(80,80,80,0.3)
+
+
 body
 	font-family: 'Quicksand', sans-serif
-	background-color: #222
-	color: white
+	background-color: $color01
+	color: $color03
 
 .well
-	background-color: rgba(80,80,80,0.3)
+	background-color: $color08
 	border-color: transparent
 
 .site
-	color: white
+	color: $color03
 
 .author
-	color: rgb(237,100,100)
+	color: $color04
 
 .tag
-	color: rgb(100,204,237)
-
+	color: $color05
 
 .date
-	color: rgb(100,237,113)
-
+	color: $color06
 
 .message
-	color: rgb(237,215,100)
+	color: $color07
 
 .progress
 	margin-top: 10px
@@ -33,7 +41,7 @@ body
 	background-color: #444
 
 .siteStyle
-	background-color: rgba(103, 103, 103, 0.1)
+	background-color: $color08
 
 .siteStyle:hover
 	background-color: rgba(139, 246, 236, 0.65)
@@ -44,21 +52,21 @@ body
 nav, .navbar-brand, .navbar-brand>a
 	font-size: 25px
 	font-weight: bold
-	color: rgb(190,190,190)
+	color: $color02
 	&:hover
-		color: white
+		color: $color03
 
 .buttons>a
-	color: rgb(190,190,190)
+	color: $color02
 	&:hover
-		color: white
+		color: $color03
 
 #searchGroup
 	margin-top: 10px
 
 #search
 	background-color: transparent
-	color: white
+	color: $color03
 
 .hide
 	display: none
@@ -72,4 +80,20 @@ nav, .navbar-brand, .navbar-brand>a
 	margin: auto
 	font-size: 14px
 	cursor: pointer
-	color: #ccc
+	color: $color02
+
+.modal-content
+	background: $color01
+
+.close
+	color: $color02
+	&:hover
+		color: $color03
+
+.btn-default
+	background: $color08
+	color: $color02
+
+input.form-control, .input-group-addon
+	color: $color02
+	background: $color08

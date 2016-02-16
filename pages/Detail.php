@@ -5,7 +5,7 @@
 			$this->data["content"] = $this->makePage();
 			$this->data["menu"] = $this->makeMenu();
 			$this->data["js"] = array_merge( $this->data["js"], array(
-				"js/home.min.js"
+				"js/detail.min.js"
 			));
 		}
 		public function makePage() {
@@ -74,7 +74,7 @@
 			return $temp;
 		}
 		private function returnSubFolder( $dir = "./" ) {
-			$temp = array();
+			$temp = [];
 			if (is_dir($dir)) {
 				if ($dh = opendir($dir)) {
 					while (($file = readdir($dh)) !== false) {

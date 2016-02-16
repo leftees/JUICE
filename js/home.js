@@ -21,12 +21,24 @@ $(document).ready(function() {
 		$("#search").val('');
 		$("#search").focus();
 		filter('');
-});
+	});
 });
 
 function newSite() {
-	console.log("Creo Sito.");
-	fai("add",{"nome": "pippo"});
+	var temp = "";
+	temp +=
+		'<div class="input-group">\
+		<span class="input-group-addon" id="basic-addon1">Project Name</span>\
+		<input type="text" class="form-control WAname" placeholder="Project Name" aria-describedby="basic-addon1">\
+		</div>';
+	dialog( "NEW WEB APP", temp, -1, [
+		'<button type="button" class="btn btn-default createWA" style="vertical-align:bottom;">Create</button>',
+		'<button type="button" class="btn btn-default" style="vertical-align:bottom;" data-dismiss="modal">Cancel</button>'
+	]);
+	$(".createWA").click(function(event) {
+		var name = $(".WAname").val();
+		fai("add",{"nome": name});
+	});
 }
 
 function fai( _action, _obj ) {
@@ -34,9 +46,9 @@ function fai( _action, _obj ) {
 	dts = JSON.stringify(_obj);
 	$.post('ajax.php', {"action":_action, "data":dts}, function(data, textStatus, xhr) {
 		if(data == "true" )
-			console.log("Ok.");
+			out("Ok.",0);
 		else
-			console.log("No Ok.");
+			out("No Ok.",3);
 	});
 }
 
@@ -49,4 +61,17 @@ function filter( _val ) {
 		else
 			$(father).addClass('hide');
 	});
+}
+
+function out( _msg, _lvl, _end ) {
+	if(_end == undefined) _end = true;
+	dialog("INFO", _msg, _lvl, []);
+	if(_end)
+		setTimeout(function () {
+			outEnd();
+		}, 1000);
+}
+
+function outEnd() {
+	$("#modalInfo").modal('hide');
 }

@@ -1,0 +1,81 @@
+$color1: white
+$color2: rgb(37, 37, 37)
+$color3: rgb(193, 193, 193)
+$green: #5cb85c
+$green-dark: rgb(77, 152, 77)
+$yellow: #d0cf6d
+$yellow-dark: #cdcc47
+$red: #D06D6D
+$red-dark: #CD4747
+$blue: #6D98D0
+$blue-dark: #4760CD
+
+.btn-fancy
+	display: inline-block
+	padding: 6px 12px
+	margin: 6px 12px 6px 0px
+	margin-bottom: 0
+	font-size: 14px
+	font-weight: 400
+	line-height: 1.42857143
+	text-align: center
+	white-space: nowrap
+	vertical-align: middle
+	cursor: pointer
+	background-image: none
+	border: 1px solid transparent
+	border-radius: 4px
+	&:hover, &:active, &:visited, &:link
+		text-decoration: none
+		color: inherit
+
+.btn-generic
+	@extend .btn-fancy
+	background-color: $color3
+	color: $color1
+	min-width: initial
+	min-width: auto
+	&:link, &:visited
+		color: $color1
+	&:hover, &:active
+		background-color: $color2
+		color: $color1
+
+.btn-insert
+	@extend .btn-generic
+	background-color: $green
+	&:hover, &:active
+		background-color: $green-dark
+
+.btn-find
+	@extend .btn-generic
+	// background-color: $yellow
+	// &:hover, &:active
+	// 	background-color: $yellow-dark
+
+.btn-modify
+	@extend .btn-generic
+	background-color: $yellow
+	&:hover, &:active
+		background-color: $yellow-dark
+
+.btn-delete
+	@extend .btn-generic
+	background-color: $red
+	&:hover, &:active
+		background-color: $red-dark
+
+.btn-disable
+	@extend .btn-generic
+	background-color: $blue
+	&:hover, &:active
+		background-color: $blue-dark
+.btn-std
+	@extend .btn-generic
+
+.btn-wide
+	width: 100%
+	margin-left: 0
+	margin-right: 0
+	@media  screen and (min-width: 750px)
+		width: auto

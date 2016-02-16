@@ -1,13 +1,16 @@
 <?php
 	function getGitLog( $_dir = "./") {
 		if(!file_exists($_dir)) return array();
+		$currentDir = getcwd();
 		chdir($_dir);
 		$git_history = [];
 		$git_logs	= [];
 		$gitPath	= str_replace('\\', '/', exec("git rev-parse --show-toplevel"));
 		$rootPath	= str_replace('\\', '/', getcwd ());
-		if( $gitPath != $rootPath )
-			return array();
+		if( $gitPath != $rootPath ) {
+			chdir($currentDir);
+			return [];
+		}
 
 		exec("git log --decorate=full --tags", $git_logs);
 		$last_hash = null;
@@ -48,6 +51,7 @@
 					$git_history[$last_hash]['message'] .= $line ." ";
 			}
 		}
+		chdir($currentDir);
 		return $git_history;
 	}
 ?>

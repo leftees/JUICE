@@ -39,16 +39,16 @@
 						}
 						?>
 						<a href="projects/<?=$j?>">
-							<div class="col-lg-<?=$dim?>">
+							<div class="col-lg-<?=$dim?> project">
 								<div class="row" style="margin:0px;">
 									<div class="well well-sm col-xs-12">
 										<div class="row">
 											<div class="text col-xs-10">
-												<div class="sito"><b>Site:</b> <?=$j?><br></div>
-												<div class="autore"><b>Author:</b> <?=$i["author"]?><br></div>
+												<div class="site"><b>Site:</b> <?=$j?><br></div>
+												<div class="author"><b>Author:</b> <?=$i["author"]?><br></div>
 												<div class="tag"><b>Tag:</b> <?php if(isset($i["tag"])) echo $i["tag"]?><br></div>
-												<div class="data"><b>Date:</b> <?=$i["date"]?><br></div>
-												<div class="messaggio"><b>Message:</b> <?=$i["message"]?><br></div>
+												<div class="date"><b>Date:</b> <?=$i["date"]?><br></div>
+												<div class="message"><b>Message:</b> <?=$i["message"]?><br></div>
 											</div>
 											<div class="buttons col-xs-2">
 												<a href="index.php?page=detail&proj=<?=$j?>">
@@ -106,6 +106,7 @@
 		private function makeMenu() {
 			jBlock();
 			?>
+				<li><input type="text" class="form-control" placeholder="Search" id="search"></li>
 				<li><a href="#"><span class="glyphicon glyphicon-plus newSite" aria-hidden="true"></span></a></li>
 				<li><a href="#" class="openConsole" folder=".\\"><span class="glyphicon glyphicon-console" aria-hidden="true"></span></a></li>
 				<li><a href="projects/phpmyadmin/"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span></a></li>

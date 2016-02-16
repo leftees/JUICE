@@ -12,6 +12,17 @@ $(document).ready(function() {
 		console.log("apri console: "+name);
 		fai("openConsole",{"nome": name});
 	});
+	$("#search").keyup(function(event) {
+		var val = $(this).val();
+		$(".site").each(function(index, el) {
+			var text = $(el).html();
+			var father = $(el).closest(".project");
+			if(text.indexOf(val) > -1)
+				$(father).removeClass('hide');
+			else
+				$(father).addClass('hide');
+		});
+	});
 });
 
 function newSite() {

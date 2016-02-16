@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	$("input:text:visible:first").focus();
 	$(".newSite").click(function(event) {
 		newSite();
 	});
@@ -14,15 +15,13 @@ $(document).ready(function() {
 	});
 	$("#search").keyup(function(event) {
 		var val = $(this).val();
-		$(".site").each(function(index, el) {
-			var text = $(el).html();
-			var father = $(el).closest(".project");
-			if(text.indexOf(val) > -1)
-				$(father).removeClass('hide');
-			else
-				$(father).addClass('hide');
-		});
+		filter(val);
 	});
+	$("#searchClear").click(function(){
+		$("#search").val('');
+		$("#search").focus();
+		filter('');
+});
 });
 
 function newSite() {
@@ -38,5 +37,16 @@ function fai( _action, _obj ) {
 			console.log("Ok.");
 		else
 			console.log("No Ok.");
+	});
+}
+
+function filter( _val ) {
+	$(".site").each(function(index, el) {
+		var text = $(el).html();
+		var father = $(el).closest(".project");
+		if(text.indexOf(_val) > -1)
+			$(father).removeClass('hide');
+		else
+			$(father).addClass('hide');
 	});
 }

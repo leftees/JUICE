@@ -60,9 +60,9 @@
 												<a href="javascript:void(0)" class="openConsole" folder="projects\\<?=$j?>">
 													<span class="glyphicon glyphicon-console" aria-hidden="true"></span>
 												</a><br><br>
-												<a href="javascript:void(0)" class="" folder="projects\\<?=$j?>">
+												<!-- <a href="javascript:void(0)" class="" folder="projects\\<?=$j?>">
 													<i class="fa fa-git"></i>
-												</a>
+												</a> -->
 											</div>
 										</div>
 										<div class="row">
@@ -106,8 +106,13 @@
 		private function makeMenu() {
 			jBlock();
 			?>
-				<li><input type="text" class="form-control" placeholder="Search" id="search"></li>
-				<li><a href="#"><span class="glyphicon glyphicon-plus newSite" aria-hidden="true"></span></a></li>
+				<li>
+					<div class="btn-group" id="searchGroup">
+						<input type="text" class="form-control" placeholder="Search" id="search">
+						<span id="searchClear" class="glyphicon glyphicon-remove-circle"></span>
+					</div>
+				</li>
+				<!-- <li><a href="#"><span class="glyphicon glyphicon-plus newSite" aria-hidden="true"></span></a></li> -->
 				<li><a href="#" class="openConsole" folder=".\\"><span class="glyphicon glyphicon-console" aria-hidden="true"></span></a></li>
 				<li><a href="projects/phpmyadmin/"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span></a></li>
 			<?php

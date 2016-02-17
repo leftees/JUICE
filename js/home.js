@@ -6,12 +6,12 @@ $(document).ready(function() {
 	$(".openFolder").click(function(event) {
 		var name = $(this).attr('folder');
 		console.log("apri cartella: "+name);
-		fai("openFolder",{"nome": name});
+		fai("openFolder",{"name": name});
 	});
 	$(".openConsole").click(function(event) {
 		var name = $(this).attr('folder');
 		console.log("apri console: "+name);
-		fai("openConsole",{"nome": name});
+		fai("openConsole",{"name": name});
 	});
 	$("#search").keyup(function(event) {
 		var val = $(this).val();
@@ -34,14 +34,29 @@ function newSite() {
 	dialog( "NEW WEB APP", temp, -1, [
 		'<button type="button" class="btn btn-default createWA" style="vertical-align:bottom;">Create</button>',
 		'<button type="button" class="btn btn-default" style="vertical-align:bottom;" data-dismiss="modal">Cancel</button>'
-	]);
-	$(".createWA").click(function(event) {
-		var name = $(".WAname").val();
-		fai("add",{"nome": name});
-	});
+		], function() {
+			$(".WAname").focus();
+			$(".createWA").click(function(event) {
+				var name = $(".WAname").val();
+				createProject("add",{"name": name});
+			});
+			$('.WAname').keypress(function (e) {
+				if (e.which == 13) {
+					var name = $(".WAname").val();
+					createProject("add",{"name": name});
+				}
+			});
+		}
+	);
 }
 
 function fai( _action, _obj ) {
+	var dts = "";
+	dts = JSON.stringify(_obj);
+	$.post('ajax.php', {"action":_action, "data":dts}, function(data, textStatus, xhr) {});
+}
+
+function createProject( _action, _obj ) {
 	var dts = "";
 	dts = JSON.stringify(_obj);
 	$.post('ajax.php', {"action":_action, "data":dts}, function(data, textStatus, xhr) {

@@ -1,8 +1,8 @@
-function dialog( _title, _content, _level, _buttons) {
-	myModal( "#modalInfo", _title, _content, _level, _buttons);
+function dialog( _title, _content, _level, _buttons, _callback) {
+	myModal( "#modalInfo", _title, _content, _level, _buttons, _callback );
 }
 
-function myModal( _id, _title, _content, _level, _buttons) {
+function myModal( _id, _title, _content, _level, _buttons, _callback ) {
 	if(_buttons == undefined) _buttons = [
 		'<button type="button" class="btn btn-default" style="vertical-align:bottom;" data-dismiss="modal">Cancel</button>'
 	];
@@ -22,6 +22,12 @@ function myModal( _id, _title, _content, _level, _buttons) {
 		default: break;
 	}
 	$(_id).find(".modal-data").html(_content);
+	if( _callback != undefined )
+		$(_id).on('show.bs.modal', function (e) {
+			setTimeout(function(){
+				_callback();
+			}, 300);
+		});
 	$(_id).modal();
 }
 

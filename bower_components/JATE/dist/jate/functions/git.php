@@ -1,6 +1,6 @@
 <?php
 	function getGitLog( $_dir = "./") {
-		if(!file_exists($_dir)) return array();
+		if(!file_exists($_dir)) return [];
 		$currentDir = getcwd();
 		chdir($_dir);
 		$git_history = [];

@@ -16,14 +16,15 @@
     "ENGINE"
   ],
   "license": "free",
-  "version": "0.0.9",
-  "_release": "0.0.9",
+  "version": "0.1.0",
+  "_release": "0.1.0",
   "_resolution": {
     "type": "version",
-    "tag": "0.0.9",
-    "commit": "703940f9924fa8baf1cfce794cd81385ac482f8d"
+    "tag": "0.1.0",
+    "commit": "0964dca7190b059c7eb54fb15099330e890bd566"
   },
   "_source": "git://github.com/XaBerr/JATE.git",
-  "_target": "~0.0.5",
-  "_originalSource": "JATE"
+  "_target": "~0.1.0",
+  "_originalSource": "JATE",
+  "_direct": true
 }

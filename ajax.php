@@ -6,33 +6,33 @@
 		$projects = subFolder("./projects");
 		$success = false;
 		foreach ($projects as $i)
-			if($data["nome"] == $i) {
+			if($data["name"] == $i) {
 				$success = true;
 				break;
 			}
 		if(!$success) {
 			//make folder
-			mkdir("./projects/".$data["nome"]);
+			mkdir("./projects/".$data["name"]);
 			//make database
 			//install JATE
-				exec("cd ./projects/".$data["nome"]." & bower install JATE ");
+				exec("cd ./projects/".$data["name"]." & bower install JATE ");
 			//set git
-				exec("cd ./projects/".$data["nome"]." & git init ");
+				exec("cd ./projects/".$data["name"]." & git init ");
 		}
 		echo !$success? "true" : "false";
 	}
 	if($_POST["action"]=="openFolder") {
 		$data = json_decode($_POST["data"],true);
-		echo $data["nome"]."<br>";
+		echo $data["name"]."<br>";
 		$logs = [];
-		exec("start ".$data["nome"], $logs);
+		exec("start ".$data["name"], $logs);
 		var_dump($logs);
 	}
 	if($_POST["action"]=="openConsole") {
 		$data = json_decode($_POST["data"],true);
-		echo $data["nome"]."<br>";
+		echo $data["name"]."<br>";
 		$logs = [];
-		exec("cd ".$data["nome"]." & start ", $logs);
+		exec("cd ".$data["name"]." & start ", $logs);
 		var_dump($logs);
 	}
 	if($_POST["action"]=="execCheck") {

@@ -34,12 +34,15 @@
 			$this->currentPage			= 0;
 			$this->tablesCached			= [];
 		}
-		public function standardTable( $_t, $_filter = "", $_page = 0 ) {
-			$this->data = [];
-			$this->data["header"] = [];
-			$this->data["header"][0] = [];
-			$this->data["body"] = [];
-			$this->data["filter"] = $this->getFilter($_t);
+		public function standardTable( $_t, $_filter = "", $_page = 0, $_dbName = -1 ) {
+			if($_dbName == -1)
+				$_dbName = $GLOBALS["config"]["connection"]["database"];
+			$dbName										= $_dbName;
+			$this->data								= [];
+			$this->data["header"]			= [];
+			$this->data["header"][0]	= [];
+			$this->data["body"]				= [];
+			$this->data["filter"]			= $this->getFilter($_t);
 			$filter = "*";
 			$this->dataRawDescribe = c_query("DESCRIBE ".$_t,"Table,standardTable,header");
 
@@ -56,7 +59,6 @@
 			$filter = implode(",", $this->data["filter"]);
 			$formAnagrafica = new Form();//$this->requires["Form"]
 			$popUp 					= [];
-			$dbName = $GLOBALS["config"]["connection"]["database"];
 			$tempQuery =
 				"SELECT `COLUMN_NAME` as res
 				FROM `information_schema`.`COLUMNS`

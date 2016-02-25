@@ -2,15 +2,8 @@
 	require_once("jate.php");
 
 	//CLASSES
-	$connection = new Connection(
-		$GLOBALS["config"]["connection"]["server"],
-		$GLOBALS["config"]["connection"]["database"],
-		$GLOBALS["config"]["connection"]["user"],
-		$GLOBALS["config"]["connection"]["password"]
-	);
-
-	$webApp	= new WebApp();
-	$page		= new Html();
+	$connection = new Connection();
+	$webApp			= new WebApp();
 
 	//FETCH
 	if(!isset($_GET["page"])) $_GET["page"] = "home";
@@ -27,10 +20,10 @@
 	$gui->init();
 	$gui->brand    		= $page->data["brand"];
 	$gui->menu  			= $page->data["menu"];
-	$gui->title       = $page->data["title"];
-	$gui->subtitle    = $page->data["subtitle"];
-	$gui->content     = $page->data["content"];
-	$gui->pagePath    = $page->data["pagePath"];
+	$gui->title				= $page->data["title"];
+	$gui->subtitle		= $page->data["subtitle"];
+	$gui->content			= $page->data["content"];
+	$gui->pagePath		= $page->data["pagePath"];
 	$gui->css					= $page->data["css"];
 	$gui->js					= $page->data["js"];
 	$gui->jsVariables	= $page->data["jsVariables"];

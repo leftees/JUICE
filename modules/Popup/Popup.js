@@ -55,3 +55,16 @@ function out( _msg, _lvl ) {
 		$("#modalInfo").modal('hide');
 	}, 2000);
 }
+
+function queryDialog( _title, _content, _callback ) {
+	var buttons = [
+			'<button type="button" class="btn btn-default queryYes" style="vertical-align:bottom;" data-dismiss="modal">Yes</button>'
+		, '<button type="button" class="btn btn-default queryNo" style="vertical-align:bottom;" data-dismiss="modal">No</button>'
+	];
+	myModal( "#modalInfo", _title, _content, 2, buttons, function() {
+		$(".queryYes").click(function(event) {
+			_callback();
+		});
+	});
+
+}

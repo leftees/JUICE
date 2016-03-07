@@ -6,6 +6,10 @@ If you need an engine in php light and flexible to organize your projects and be
 ###### MANUAL
 Just download and uncompress zip file from GitHub.
 Put the contents of the folder named JUICE in the root of your web server or to a location of your choice.
+###### BOWER
+```
+Bower install JUICE
+```
 ## NATIVE
 The system has been tested with the following characteristics:
 - Internet (for CDN)

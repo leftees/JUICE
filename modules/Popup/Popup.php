@@ -4,7 +4,11 @@
 		public $data;
 		public function __construct() {
 			$this->name = get_class($this);
-			$this->data = [];
+			$this->data = [
+				"title"		=> [],
+				"text"		=> [],
+				"buttons"	=> []
+			];
 			$this->dipendence = [
 				"modules/Popup/Popup.min.js",
 				"modules/Button/Button.min.css"

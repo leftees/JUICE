@@ -16,8 +16,12 @@ engines:
         enabled: false
 ratings:
   paths:
+  - "**.html"
+  - "**.sass"
   - "**.js"
   - "**.php"
 exclude_paths:
 - git/**/*
 - projects/**/*
+- bower_components/**/*
+- **.min.**

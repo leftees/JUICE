@@ -24,5 +24,7 @@ exclude_paths:
 - git/**/*
 - projects/**/*
 - bower_components/**/*
-- *.min.js
-- *.min.css
+- "**/*.min.js"
+- "*.min.js"
+- "**/*.min.css"
+- "*.min.css"

@@ -17,19 +17,32 @@ body
 	background-color: $color08
 	border-color: transparent
 
+.text-block
+	overflow: hidden
+	text-overflow: ellipsis
+
 .site
+	@extend .text-block
 	color: $color03
+	font-family: 'Open Sans'
+	font-weight: 700
+	text-transform: uppercase
+	letter-spacing: 1px
 
 .author
+	@extend .text-block
 	color: $color04
 
 .tag
+	@extend .text-block
 	color: $color05
 
 .date
+	@extend .text-block
 	color: $color06
 
 .message
+	@extend .text-block
 	color: $color07
 
 .progress
@@ -97,3 +110,7 @@ nav, .navbar-brand, .navbar-brand>a
 input.form-control, .input-group-addon
 	color: $color02
 	background: $color08
+
+.webname
+	text-align: center
+	font-size: 24px

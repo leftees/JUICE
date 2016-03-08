@@ -15,9 +15,10 @@ function fai( _action, _obj ) {
 	var dts = "";
 	dts = JSON.stringify(_obj);
 	$.post('ajax.php', {"action":_action, "data":dts}, function(data, textStatus, xhr) {
-		if(data == "true" )
+		if(data == "true" ) {
 			console.log("Ok.");
-		else
+			window.location.reload();
+		} else
 			console.log("No Ok.");
 	});
 }

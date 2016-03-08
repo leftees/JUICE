@@ -53,7 +53,13 @@ function newSite() {
 function fai( _action, _obj ) {
 	var dts = "";
 	dts = JSON.stringify(_obj);
-	$.post('ajax.php', {"action":_action, "data":dts}, function(data, textStatus, xhr) {});
+	$.post('ajax.php', {"action":_action, "data":dts}, function(data, textStatus, xhr) {
+		if(data == "true" ) {
+			console.log("Ok.");
+			window.location.reload();
+		} else
+			console.log("No Ok.");
+	});
 }
 
 function createProject( _action, _obj ) {

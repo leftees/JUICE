@@ -10,8 +10,17 @@
 		}
 		public function makePage() {
 			$sites = ($this->returnSubFolder("projects"));
+			if(!isset($_GET["proj"])) $_GET["proj"] = "JATE";
+			$project = $_GET["proj"];
 			jBlock();
 			?>
+			<div class="row">
+				<div class="col-xs-12 webname">
+					<div class="well">
+						<?=$project?>
+					</div>
+				</div>
+			</div>
 			<div class="row" id="elencoSiti">
 				<div class="col-lg-12">
 					<?php
@@ -22,8 +31,6 @@
 					$percent = "";
 					$precentCurrent = 0;
 					$dir = getcwd();
-					if(!isset($_GET["proj"])) $_GET["proj"] = "JATE";
-					$project = $_GET["proj"];
 					$logs = getGitLog("./projects/$project/");
 					foreach ( $logs as $i ) {
 						$cont++;
@@ -40,7 +47,7 @@
 									<div class="well well-sm col-xs-12">
 										<div class="row">
 											<div class="text col-xs-10">
-												<div class="site"><b>Site:</b> <?=$project?><br></div>
+												<!-- <div class="site"><b>Site:</b> <?=$project?><br></div> -->
 												<div class="author"><b>Author:</b> <?=$i["author"]?><br></div>
 												<div class="tag"><b>Tag:</b> <?php if(isset($i["tag"])) echo $i["tag"]?><br></div>
 												<div class="date"><b>Date:</b> <?=$i["date"]?><br></div>

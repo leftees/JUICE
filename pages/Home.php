@@ -12,6 +12,8 @@
 		public function makePage() {
 			$popupA = $this->modules["Popup"];
 			$sites = ($this->returnSubFolder("projects"));
+			$tab = "";
+			if($GLOBALS["tab"] === true) $tab = 'target="_blank"';
 			jBlock();
 			?>
 			<div class="row" id="elencoSiti">
@@ -40,20 +42,20 @@
 							$percent = 100 * intval($percent[0]) + 10 * intval($percent[1]) + intval($percent[2]);
 						}
 						?>
-						<a href="projects/<?=$j?>">
+						<a href="projects/<?=$j?>" <?=$tab?>>
 							<div class="col-lg-<?=$dim?> project">
 								<div class="row" style="margin:0px;">
 									<div class="well well-sm col-xs-12">
 										<div class="row">
 											<div class="text col-xs-10">
-												<div class="site"><b>Site:</b> <?=$j?><br></div>
+												<div class="site"><!--<b>Site:</b>--> <?=$j?><br></div>
 												<div class="author"><b>Author:</b> <?=$i["author"]?><br></div>
 												<div class="tag"><b>Tag:</b> <?php if(isset($i["tag"])) echo $i["tag"]?><br></div>
 												<div class="date"><b>Date:</b> <?=$i["date"]?><br></div>
 												<div class="message"><b>Message:</b> <?=$i["message"]?><br></div>
 											</div>
 											<div class="buttons col-xs-2">
-												<a href="index.php?page=detail&proj=<?=$j?>">
+												<a href="index.php?page=detail&proj=<?=$j?>" <?=$tab?>>
 													<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 												</a><br><br>
 												<a href="javascript:void(0)" class="openFolder" folder="projects\\<?=$j?>">
@@ -107,6 +109,8 @@
 			return $temp;
 		}
 		private function makeMenu() {
+			$tab = "";
+			if($GLOBALS["tab"] === true) $tab = 'target="_blank"';
 			jBlock();
 			?>
 				<li>
@@ -117,7 +121,7 @@
 				</li>
 				<li><a href="#"><span class="glyphicon glyphicon-plus newSite" aria-hidden="true"></span></a></li>
 				<li><a href="#" class="openConsole" folder=".\\"><span class="glyphicon glyphicon-console" aria-hidden="true"></span></a></li>
-				<li><a href="projects/phpmyadmin/"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span></a></li>
+				<li><a href="<?=$GLOBALS["config"]["connection"]["server"]?>/phpmyadmin/" <?=$tab?>><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span></a></li>
 			<?php
 			$temp = jBlockEnd();
 			return $temp;

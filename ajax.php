@@ -23,17 +23,19 @@
 	}
 	if($_POST["action"]=="openFolder") {
 		$data = json_decode($_POST["data"],true);
-		echo $data["name"]."<br>";
+		// echo $data["name"]."<br>";
 		$logs = [];
 		exec("start ".$data["name"], $logs);
-		var_dump($logs);
+		// var_dump($logs);
+		echo "true";
 	}
 	if($_POST["action"]=="openConsole") {
 		$data = json_decode($_POST["data"],true);
-		echo $data["name"]."<br>";
+		// echo $data["name"]."<br>";
 		$logs = [];
 		exec("cd ".$data["name"]." & start ", $logs);
-		var_dump($logs);
+		// var_dump($logs);
+		echo "true";
 	}
 	if($_POST["action"]=="execCheck") {
 		if(exec('echo EXEC') == 'EXEC'){

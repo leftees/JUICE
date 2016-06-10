@@ -14,7 +14,7 @@ engines:
         enabled: false
       Controversial/CamelCaseVariableName:
         enabled: false
-ratings:
+  ratings:
   paths:
   - "**.html"
   - "**.sass"
